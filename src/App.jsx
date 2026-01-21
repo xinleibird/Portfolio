@@ -1,4 +1,4 @@
-import { NavBar } from "#components";
+import { NavBar, Welcome } from "#components";
 
 /**
  * Root application component that renders the main layout containing the navigation bar.
@@ -10,8 +10,10 @@ function App() {
   return (
     <main>
       <NavBar />
+      <Welcome />
     </main>
   );
 }
 
 export default App;
+
