@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "baseUrl": ".",
+    "paths": {
+      "/*": ["public/*"],
+      "/images/*": ["public/images/*"],
+
+      "#*": ["src/*"],
+      "#assets/*": ["src/assets/*"],
+      "#components/*": ["src/components/*"],
+      "#constants/*": ["src/constants/*"]
+    }
+  },
+  "include": ["src/**/*", "resolve.d.ts"],
+  "exclude": ["node_modules", "dist"]
+}
