@@ -31,10 +31,11 @@ const FONT_WEIGHT = {
  *
  * @param {HTMLElement} container
  * @param {('title'|'subtitle')} type
+ * @param {Function} contextSafe
  * @returns
  */
 
-const setupTextHover = function setupTextHover(container, type) {
+const setupTextHover = function setupTextHover(container, type, contextSafe) {
   if (!container) {
     return () => {};
   }
@@ -42,13 +43,14 @@ const setupTextHover = function setupTextHover(container, type) {
   const letters = container.querySelectorAll("span");
   const { min, max, default: base } = FONT_WEIGHT[type];
 
-  const animateLetter = (letter, weight, duration = 0.25) => {
-    return gsap.to(letter, {
+  // Wrap the animation creation in contextSafe so GSAP tracks these animations
+  const animateLetter = contextSafe((letter, weight, duration = 0.25) => {
+    gsap.to(letter, {
       duration,
       ease: "power2.out",
       fontVariationSettings: `'wght' ${weight}`,
     });
-  };
+  });
 
   /**
    *
@@ -83,13 +85,22 @@ const setupTextHover = function setupTextHover(container, type) {
 };
 
 const Welcome = () => {
-  const titleRef = useRef(null);
-  const subtitleRef = useRef(null);
+  const titleRef = useRef();
+  const subtitleRef = useRef();
 
-  useGSAP((context) => {
-    context.add(() => setupTextHover(titleRef.current, "title"));
-    context.add(() => setupTextHover(subtitleRef.current, "subtitle"));
-  }, []);
+  useGSAP(
+    (_, contextSafe) => {
+      return setupTextHover(titleRef.current, "title", contextSafe);
+    },
+    { scope: titleRef },
+  );
+
+  useGSAP(
+    (_, contextSafe) => {
+      return setupTextHover(subtitleRef.current, "subtitle", contextSafe);
+    },
+    { scope: subtitleRef },
+  );
 
   return (
     <section id="welcome">
