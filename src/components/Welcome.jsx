@@ -2,16 +2,8 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useRef } from "react";
 
-/**
- *
- * @param {string} text ()
- * @param {string} className
- * @param {number} baseWeight
- * @returns
- */
-
-const renderText = function renderText(text, className, baseWeight = 400) {
-  return [...text].map((char, i) => (
+const renderText = (text = "", className = "", baseWeight = 400) =>
+  [...text].map((char, i) => (
     <span
       key={i}
       className={className}
@@ -20,7 +12,6 @@ const renderText = function renderText(text, className, baseWeight = 400) {
       {char === " " ? "\u00A0" : char}
     </span>
   ));
-};
 
 const FONT_WEIGHT = {
   subtitle: { min: 100, max: 400, default: 100 },
@@ -34,7 +25,6 @@ const FONT_WEIGHT = {
  * @param {Function} contextSafe
  * @returns
  */
-
 const setupTextHover = function setupTextHover(container, type, contextSafe) {
   if (!container) {
     return () => {};
@@ -44,18 +34,17 @@ const setupTextHover = function setupTextHover(container, type, contextSafe) {
   const { min, max, default: base } = FONT_WEIGHT[type];
 
   // Wrap the animation creation in contextSafe so GSAP tracks these animations
-  const animateLetter = contextSafe((letter, weight, duration = 0.25) => {
-    gsap.to(letter, {
-      duration,
-      ease: "power2.out",
-      fontVariationSettings: `'wght' ${weight}`,
-    });
-  });
+  const animateLetter = contextSafe(
+    (letter = "", weight = 100, duration = 0.25) => {
+      gsap.to(letter, {
+        duration,
+        ease: "power2.out",
+        fontVariationSettings: `'wght' ${weight}`,
+      });
+    },
+  );
 
-  /**
-   *
-   * @param {MouseEvent} e
-   */
+  /** @param {MouseEvent} e */
   const handleMouseMove = (e) => {
     const { left: containerX } = container.getBoundingClientRect();
     const mouseX = e.clientX - containerX;
@@ -85,8 +74,8 @@ const setupTextHover = function setupTextHover(container, type, contextSafe) {
 };
 
 const Welcome = () => {
-  const titleRef = useRef();
-  const subtitleRef = useRef();
+  const titleRef = useRef(null);
+  const subtitleRef = useRef(null);
 
   useGSAP(
     (_, contextSafe) => {

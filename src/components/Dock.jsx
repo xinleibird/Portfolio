@@ -5,9 +5,9 @@ import { useGSAP } from "@gsap/react";
 import { Tooltip } from "react-tooltip";
 
 const Dock = () => {
-  const dockRef = useRef();
+  const dockRef = useRef(null);
 
-  const toggleApp = (app) => {
+  const toggleApp = (app = {}) => {
     console.log(app);
   };
 
@@ -22,7 +22,7 @@ const Dock = () => {
         (icon) => !icon.disabled,
       );
 
-      const animateIcons = (distance) => {
+      const animateIcons = (distance = 0) => {
         const { left: dockLeft } = dock.getBoundingClientRect();
         icons.forEach((icon) => {
           const { left: iconLeft, width: iconWidth } =
@@ -40,16 +40,15 @@ const Dock = () => {
         });
       };
 
-      /**
-       *
-       * @param {MouseEvent} e
-       */
-      const handleMouseMove = contextSafe((e) => {
-        const { left: dockLeft } = dock.getBoundingClientRect();
-        const mouseXDistance = e.clientX - dockLeft;
+      const handleMouseMove = contextSafe(
+        /** @param {MouseEvent} e */
+        (e) => {
+          const { left: dockLeft } = dock.getBoundingClientRect();
+          const mouseXDistance = e.clientX - dockLeft;
 
-        animateIcons(mouseXDistance);
-      });
+          animateIcons(mouseXDistance);
+        },
+      );
 
       const handleMouseLeave = contextSafe(() => {
         icons.forEach((icon) => {
@@ -85,7 +84,7 @@ const Dock = () => {
               data-tooltip-id="dock-tooltip"
               data-tooltip-content={name}
               data-tooltip-place="top"
-              data-tooltip-delay-show="150"
+              data-tooltip-delay-show={150}
               disabled={!canOpen}
               onClick={() => {
                 toggleApp({ id, canOpen });
