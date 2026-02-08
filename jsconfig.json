@@ -41,7 +41,8 @@
       "#*": ["src/*"],
       "#assets/*": ["src/assets/*"],
       "#components/*": ["src/components/*"],
-      "#constants/*": ["src/constants/*"]
+      "#constants/*": ["src/constants/*"],
+      "#store/*": ["src/store/*"]
     }
   },
   "include": ["src/**/*", "resolve.d.ts"],
