@@ -34,10 +34,10 @@ const createWindowStore = create(
     /** @param {string} key */
     focusWindow: (key) =>
       set(
-        /** @param {{ windows: { [x: string]: any; }; nextZIndex: number; }} state */
+        /** `@param` {{ windows: { [x: string]: any; }; nextZIndex: number; }} state */
         (state) => {
           const window = state.windows[key];
-          window.isOpen = false;
+          window.isOpen = true;
           window.zIndex = state.nextZIndex++;
         },
       ),
