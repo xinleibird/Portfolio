@@ -7,7 +7,7 @@ import { Tooltip } from "react-tooltip";
 import useWindowStore from "#store/window";
 
 const Dock = () => {
-  const { openWindw, closeWindow, windows } = useWindowStore();
+  const { toggleWindow } = useWindowStore();
 
   const dockRef = useRef(null);
 
@@ -16,13 +16,7 @@ const Dock = () => {
       return;
     }
 
-    const window = windows[id];
-
-    if (window.isOpen) {
-      closeWindow(id);
-    } else {
-      openWindw(id);
-    }
+    toggleWindow(id);
   };
 
   useGSAP(
