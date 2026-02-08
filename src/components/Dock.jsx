@@ -24,7 +24,6 @@ const Dock = () => {
       openWindw(id);
     }
 
-    console.log(windows);
   };
 
   useGSAP(
