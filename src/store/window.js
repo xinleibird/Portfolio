@@ -8,7 +8,7 @@ const createWindowStore = create(
     nextZIndex: INITIAL_Z_INDEX + 1,
 
     /** @param {string} key */
-    openWindw: (key, data = null) =>
+    openWindow: (key, data = null) =>
       set(
         /** @param {{ windows: { [x: string]: any; }; nextZIndex: number; }} state */
         (state) => {
