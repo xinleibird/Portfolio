@@ -33,6 +33,27 @@ const useWindowStore = create(
           window.data = null;
         },
       ),
+
+    /** @param {string} key */
+    toggleWindow: (key, data = null) =>
+      set(
+        /** @param {{ windows: { [x: string]: any; }; nextZIndex: number; }} state */
+        (state) => {
+          const window = state.windows[key];
+          if (!window) return;
+          
+          if (window.isOpen) {
+            window.isOpen = false;
+            window.zIndex = INITIAL_Z_INDEX;
+            window.data = null;
+          } else {
+            window.isOpen = true;
+            window.zIndex = state.nextZIndex;
+            window.data = data ?? window.data;
+            state.nextZIndex++;
+          }
+        },
+      ),
     /** @param {string} key */
     focusWindow: (key) =>
       set(
