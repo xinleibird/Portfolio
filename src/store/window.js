@@ -2,7 +2,7 @@ import { INITIAL_Z_INDEX, INITIAL_WINDOWS } from "#constants";
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 
-const createWindowStore = create(
+const useWindowStore = create(
   immer((set) => ({
     windows: INITIAL_WINDOWS,
     nextZIndex: INITIAL_Z_INDEX + 1,
@@ -13,6 +13,7 @@ const createWindowStore = create(
         /** @param {{ windows: { [x: string]: any; }; nextZIndex: number; }} state */
         (state) => {
           const window = state.windows[key];
+          if (!window) return;
           window.isOpen = true;
           window.zIndex = state.nextZIndex;
           window.data = data ?? window.data;
@@ -26,6 +27,7 @@ const createWindowStore = create(
         /** @param {{ windows: { [x: string]: any; }; nextZIndex: number; }} state */
         (state) => {
           const window = state.windows[key];
+          if (!window) return;
           window.isOpen = false;
           window.zIndex = INITIAL_Z_INDEX;
           window.data = null;
@@ -34,9 +36,10 @@ const createWindowStore = create(
     /** @param {string} key */
     focusWindow: (key) =>
       set(
-        /** `@param` {{ windows: { [x: string]: any; }; nextZIndex: number; }} state */
+        /** @param {{ windows: { [x: string]: any; }; nextZIndex: number; }} state */
         (state) => {
           const window = state.windows[key];
+          if (!window) return;
           window.isOpen = true;
           window.zIndex = state.nextZIndex++;
         },
@@ -44,4 +47,4 @@ const createWindowStore = create(
   })),
 );
 
-export default createWindowStore;
+export default useWindowStore;

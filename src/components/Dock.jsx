@@ -4,10 +4,10 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { Tooltip } from "react-tooltip";
 
-import createWindowStore from "#store/window";
+import useWindowStore from "#store/window";
 
 const Dock = () => {
-  const { openWindw, closeWindow, windows } = createWindowStore();
+  const { openWindw, closeWindow, windows } = useWindowStore();
 
   const dockRef = useRef(null);
 
@@ -23,7 +23,6 @@ const Dock = () => {
     } else {
       openWindw(id);
     }
-
   };
 
   useGSAP(
