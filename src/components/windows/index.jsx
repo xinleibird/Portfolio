@@ -2,7 +2,7 @@ import Terminal from "./Terminal";
 const Windows = () => {
   return (
     <>
-      <Terminal />;
+      <Terminal />
     </>
   );
 };
