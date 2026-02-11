@@ -53,7 +53,7 @@ const WindowWrapper = (Component, key) => {
       if (!element) {
         return;
       }
-      element.hidden = isOpen ? false : true;
+      element.hidden = !isOpen;
     }, [isOpen]);
 
     return (
