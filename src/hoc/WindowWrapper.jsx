@@ -21,9 +21,10 @@ const WindowWrapper = (Component, key) => {
     const ref = useRef(null);
 
     useGSAP(() => {
-      /** @type {HTMLElement} */
+      /** `@type` {HTMLElement} */
       const element = ref.current;
       if (!element) return;
+      if (!isOpen) return;
       element.hidden = false;
       gsap.fromTo(
         element,
