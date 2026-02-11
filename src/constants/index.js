@@ -74,6 +74,33 @@ export const dockApps = [
   },
 ];
 
+export const techStack = [
+  {
+    category: "Frontend",
+    items: ["React.js", "Next.js", "TypeScript"],
+  },
+  {
+    category: "Mobile",
+    items: ["React Native", "Expo"],
+  },
+  {
+    category: "Styling",
+    items: ["Tailwind CSS", "Sass", "CSS"],
+  },
+  {
+    category: "Backend",
+    items: ["Node.js", "Express", "NestJS", "Hono"],
+  },
+  {
+    category: "Database",
+    items: ["MongoDB", "PostgreSQL"],
+  },
+  {
+    category: "Dev Tools",
+    items: ["Git", "GitHub", "Docker"],
+  },
+];
+
 export const INITIAL_Z_INDEX = 1000;
 
 export const INITIAL_WINDOWS = {

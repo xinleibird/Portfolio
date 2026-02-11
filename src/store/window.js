@@ -41,7 +41,7 @@ const useWindowStore = create(
         (state) => {
           const window = state.windows[key];
           if (!window) return;
-          
+
           if (window.isOpen) {
             window.isOpen = false;
             window.zIndex = INITIAL_Z_INDEX;

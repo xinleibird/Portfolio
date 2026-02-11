@@ -42,7 +42,8 @@
       "#assets/*": ["src/assets/*"],
       "#components/*": ["src/components/*"],
       "#constants/*": ["src/constants/*"],
-      "#store/*": ["src/store/*"]
+      "#store/*": ["src/store/*"],
+      "#hoc/*": ["src/hoc/*"]
     }
   },
   "include": ["src/**/*", "resolve.d.ts"],
