@@ -7,12 +7,12 @@ const useWindowStore = create(
     windows: INITIAL_WINDOWS,
     nextZIndex: INITIAL_Z_INDEX + 1,
 
-    /** @param {string} key */
-    openWindow: (key, data = null) =>
+    /** @param {string} windowKey */
+    openWindow: (windowKey, data = null) =>
       set(
         /** @param {{ windows: { [x: string]: any; }; nextZIndex: number; }} state */
         (state) => {
-          const window = state.windows[key];
+          const window = state.windows[windowKey];
           if (!window) return;
           window.isOpen = true;
           window.zIndex = state.nextZIndex;
@@ -21,12 +21,12 @@ const useWindowStore = create(
         },
       ),
 
-    /** @param {string} key */
-    closeWindow: (key) =>
+    /** @param {string} windowkey */
+    closeWindow: (windowkey) =>
       set(
         /** @param {{ windows: { [x: string]: any; }; nextZIndex: number; }} state */
         (state) => {
-          const window = state.windows[key];
+          const window = state.windows[windowkey];
           if (!window) return;
           window.isOpen = false;
           window.zIndex = INITIAL_Z_INDEX;
@@ -34,12 +34,12 @@ const useWindowStore = create(
         },
       ),
 
-    /** @param {string} key */
-    toggleWindow: (key, data = null) =>
+    /** @param {string} windowKey */
+    toggleWindow: (windowKey, data = null) =>
       set(
         /** @param {{ windows: { [x: string]: any; }; nextZIndex: number; }} state */
         (state) => {
-          const window = state.windows[key];
+          const window = state.windows[windowKey];
           if (!window) return;
           if (window.isOpen) {
             window.isOpen = false;
@@ -53,12 +53,12 @@ const useWindowStore = create(
           }
         },
       ),
-    /** @param {string} key */
-    focusWindow: (key) =>
+    /** @param {string} windowKey */
+    focusWindow: (windowKey) =>
       set(
         /** @param {{ windows: { [x: string]: any; }; nextZIndex: number; }} state */
         (state) => {
-          const window = state.windows[key];
+          const window = state.windows[windowKey];
           if (!window) return;
           window.isOpen = true;
           window.zIndex = state.nextZIndex++;

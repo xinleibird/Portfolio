@@ -7,17 +7,17 @@ import { Activity, useRef } from "react";
 /**
  * A Higher Order Component that wraps a component in a window-like element
  * @param {React.ComponentType} Component - The component to wrap
- * @param {"finder"|"contact"|"resume"|"safari"|"photos"| "terminal"|"txtfile"|"imgfile"} key - The key to identify the window
+ * @param {"finder"|"contact"|"resume"|"safari"|"photos"| "terminal"|"txtfile"|"imgfile"} windowKey - The key to identify the window
  * @returns {React.FC} - The wrapped component
  */
-const WindowWrapper = (Component, key) => {
+const WindowWrapper = (Component, windowKey) => {
   /**
    * @param {Object} props - Component props
    * @returns {import("react").JSX.Element} - Rendered component
    */
   const Wrapped = (props) => {
     const { windows, focusWindow } = useWindowStore();
-    const { zIndex, isOpen } = windows?.[key] || {};
+    const { zIndex, isOpen } = windows?.[windowKey] || {};
     const ref = useRef(null);
 
     useGSAP(
@@ -42,7 +42,7 @@ const WindowWrapper = (Component, key) => {
 
         const [instance] = Draggable.create(element, {
           onPress: () => {
-            focusWindow(key);
+            focusWindow(windowKey);
           },
         });
 
@@ -53,7 +53,12 @@ const WindowWrapper = (Component, key) => {
 
     return (
       <Activity mode={isOpen ? "visible" : "hidden"}>
-        <section id={key} ref={ref} style={{ zIndex }} className="absolute">
+        <section
+          id={windowKey}
+          ref={ref}
+          style={{ zIndex }}
+          className="absolute"
+        >
           <Component {...props} />
         </section>
       </Activity>
