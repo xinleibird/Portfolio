@@ -13,7 +13,9 @@ const useWindowStore = create(
         /** @param {{ windows: { [x: string]: any; }; nextZIndex: number; }} state */
         (state) => {
           const window = state.windows[windowKey];
-          if (!window) return;
+          if (!window) {
+            return;
+          }
           window.isOpen = true;
           window.zIndex = state.nextZIndex;
           window.data = data ?? window.data;
@@ -27,7 +29,9 @@ const useWindowStore = create(
         /** @param {{ windows: { [x: string]: any; }; nextZIndex: number; }} state */
         (state) => {
           const window = state.windows[windowkey];
-          if (!window) return;
+          if (!window) {
+            return;
+          }
           window.isOpen = false;
           window.zIndex = INITIAL_Z_INDEX;
           window.data = null;
@@ -40,7 +44,9 @@ const useWindowStore = create(
         /** @param {{ windows: { [x: string]: any; }; nextZIndex: number; }} state */
         (state) => {
           const window = state.windows[windowKey];
-          if (!window) return;
+          if (!window) {
+            return;
+          }
           if (window.isOpen) {
             window.isOpen = false;
             window.zIndex = INITIAL_Z_INDEX;
@@ -59,7 +65,9 @@ const useWindowStore = create(
         /** @param {{ windows: { [x: string]: any; }; nextZIndex: number; }} state */
         (state) => {
           const window = state.windows[windowKey];
-          if (!window) return;
+          if (!window) {
+            return;
+          }
           window.isOpen = true;
           window.zIndex = state.nextZIndex++;
         },
