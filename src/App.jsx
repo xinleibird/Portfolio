@@ -1,6 +1,7 @@
-import { Dock, NavBar, Windows, Welcome } from "#components";
 import gsap from "gsap";
 import Draggable from "gsap/Draggable";
+
+import { Dock, NavBar, Welcome, Windows } from "#components";
 
 gsap.registerPlugin(Draggable);
 

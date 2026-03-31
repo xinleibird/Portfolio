@@ -1,6 +1,8 @@
+import { Check, Flag } from "lucide-react";
+
 import { techStack } from "#constants";
 import WindowWrapper from "#hoc/WindowWrapper";
-import { Check, Flag } from "lucide-react";
+
 import WindowControls from "./WindowControls";
 
 const Terminal = () => {
@@ -43,8 +45,8 @@ const Terminal = () => {
 
         <div className="footnote">
           <p>
-            <Check size={20} /> {techStack.length} / {techStack.length} stacks
-            loaded successfully (100%)
+            <Check size={20} /> {techStack.length} / {techStack.length}
+            stacks loaded successfully (100%)
           </p>
 
           <p className="text-black">
