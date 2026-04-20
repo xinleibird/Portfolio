@@ -1,8 +1,9 @@
-import useWindowStore from "#store/window";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { Draggable } from "gsap/all";
 import { useLayoutEffect, useRef } from "react";
+
+import useWindowStore from "#store/window";
 
 /**
  * A Higher Order Component that wraps a component in a window-like element
@@ -10,6 +11,7 @@ import { useLayoutEffect, useRef } from "react";
  * @param {"finder"|"contact"|"resume"|"safari"|"photos"| "terminal"|"txtfile"|"imgfile"} windowKey - The key to identify the window
  * @returns {React.FC} - The wrapped component
  */
+
 const WindowWrapper = (Component, windowKey) => {
   /**
    * @param {Object} props - Component props

@@ -24,6 +24,8 @@ export default defineConfig([
     },
     rules: {
       "no-unused-vars": "off",
+      "no-unused-labels": "off",
+      "no-unused-private-class-members": "off",
     },
   },
 ]);
