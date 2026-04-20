@@ -1,7 +1,26 @@
-import { INITIAL_Z_INDEX, INITIAL_WINDOWS } from "#constants";
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 
+import { INITIAL_Z_INDEX, INITIAL_WINDOWS } from "#constants";
+
+/**
+ * @typedef {Object} WindowItem
+ * @property {boolean} isOpen
+ * @property {number} zIndex
+ * @property {any} data
+ */
+
+/**
+ * @typedef {Object} WindowState
+ * @property {Record<string, WindowItem>} windows
+ * @property {number} nextZIndex
+ * @property {(windowKey: string, data?: any) => void} openWindow
+ * @property {(windowKey: string) => void} closeWindow
+ * @property {(windowKey: string, data?: any) => void} toggleWindow
+ * @property {(windowKey: string) => void} focusWindow
+ */
+
+/** @type {() => WindowState}  */
 const useWindowStore = create(
   immer((set) => ({
     windows: INITIAL_WINDOWS,
