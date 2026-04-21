@@ -153,7 +153,7 @@ const WORK_LOCATION = {
       icon: "/images/folder.png",
       kind: "folder",
       position: "top-10 left-5", // icon position inside Finder
-      windowPosition: "top-[5vh] left-5", // optional: Finder window position
+      windowPosition: "top-[5vh] left-50", // optional: Finder window position
       children: [
         {
           id: 1,
@@ -259,7 +259,7 @@ const WORK_LOCATION = {
       icon: "/images/folder.png",
       kind: "folder",
       position: "top-10 left-80",
-      windowPosition: "top-[33vh] left-7",
+      windowPosition: "top-[33vh] left-58",
       children: [
         {
           id: 1,
@@ -413,3 +413,81 @@ export const locations = {
   resume: RESUME_LOCATION,
   trash: TRASH_LOCATION,
 };
+
+export const socials = [
+  {
+    id: 1,
+    text: "Github",
+    icon: "/icons/github.svg",
+    bg: "#f4656b",
+    link: "https://github.com/JavaScript-Mastery-Pro",
+  },
+  {
+    id: 2,
+    text: "Platform",
+    icon: "/icons/atom.svg",
+    bg: "#4bcb63",
+    link: "https://jsmastery.com/",
+  },
+  {
+    id: 3,
+    text: "Twitter/X",
+    icon: "/icons/twitter.svg",
+    bg: "#ff866b",
+    link: "https://x.com/jsmasterypro",
+  },
+  {
+    id: 4,
+    text: "LinkedIn",
+    icon: "/icons/linkedin.svg",
+    bg: "#05b6f6",
+    link: "https://www.linkedin.com/company/javascriptmastery/posts/?feedView=all",
+  },
+];
+
+export const photosLinks = [
+  {
+    id: 1,
+    icon: "/icons/gicon1.svg",
+    title: "Library",
+  },
+  {
+    id: 2,
+    icon: "/icons/gicon2.svg",
+    title: "Memories",
+  },
+  {
+    id: 3,
+    icon: "/icons/file.svg",
+    title: "Places",
+  },
+  {
+    id: 4,
+    icon: "/icons/gicon4.svg",
+    title: "People",
+  },
+  {
+    id: 5,
+    icon: "/icons/gicon5.svg",
+    title: "Favorites",
+  },
+];
+
+export const gallery = [
+  {
+    id: 1,
+    img: "/images/gal1.png",
+  },
+  {
+    id: 2,
+    img: "/images/gal2.png",
+  },
+  {
+    id: 3,
+    img: "/images/gal3.png",
+  },
+  {
+    id: 4,
+    img: "/images/gal4.png",
+  },
+];
