@@ -3,7 +3,7 @@ import { immer } from "zustand/middleware/immer";
 
 import { locations } from "#constants";
 
-const DEFULT_LOCATION = locations.work;
+const DEFAULT_LOCATION = locations.work;
 
 /**
  * @typedef {Object} LocationItem
@@ -29,7 +29,7 @@ const DEFULT_LOCATION = locations.work;
  */
 const useLocationStore = create(
   immer((set) => ({
-    activeLocation: DEFULT_LOCATION,
+    activeLocation: DEFAULT_LOCATION,
     setActiveLocation: (location = null) => {
       set(
         /** @param {LocationState} state */
@@ -42,7 +42,7 @@ const useLocationStore = create(
       set(
         /** @param {LocationState} state */
         (state) => {
-          state.activeLocation = DEFULT_LOCATION;
+          state.activeLocation = DEFAULT_LOCATION;
         },
       );
     },

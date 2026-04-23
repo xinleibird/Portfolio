@@ -42,12 +42,12 @@ const useWindowStore = create(
         },
       ),
 
-    /** @param {string} windowkey */
-    closeWindow: (windowkey) =>
+    /** @param {string} windowKey */
+    closeWindow: (windowKey) =>
       set(
         /** @param {{ windows: { [x: string]: any; }; nextZIndex: number; }} state */
         (state) => {
-          const window = state.windows[windowkey];
+          const window = state.windows[windowKey];
           if (!window) {
             return;
           }
